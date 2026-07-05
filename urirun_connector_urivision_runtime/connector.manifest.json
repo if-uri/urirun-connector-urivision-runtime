@@ -1,0 +1,22 @@
+{
+  "id": "urivision-runtime",
+  "name": "urivision runtime catalog",
+  "status": "available",
+  "category": "Vision",
+  "summary": "Serve urivision's CapabilityRegistry — the URI-addressed contract map of the perception/action stack (ui://, input://, view://, guard://…) — as runtime:// routes: catalog, explain, and a guarded dry-run-by-default dispatch.",
+  "description": "urivision's runtime is a deliberately mock-backed CapabilityRegistry: stable URI contracts with schemas, preconditions and safety tags, while the real execution lives in urirun connectors (kvm/vql/vdisplay). This connector gives the mesh the missing piece — the CATALOG — so a flow, planner, or node can discover and reason over that contract map without duplicating any implementation. capabilities/query/list returns the full catalog (json, markdown, prompt or tools format); capability/query/explain resolves one URI to its capability, captures and expected payload; capability/command/call dispatches through the registry, dry-run by default (validate + show what WOULD run), execute=true to invoke the mock-backed handler.",
+  "useCases": [
+    "Give an LLM planner the full capability catalog (prompt/tools format) as its action space.",
+    "Resolve a URI to its contract — schema, preconditions, safety tag — before executing it elsewhere.",
+    "Validate a payload against a capability (dry-run call) as a cheap preflight gate."
+  ],
+  "flowExample": [
+    "runtime://host/capabilities/query/list",
+    "runtime://host/capability/query/explain",
+    "runtime://host/capability/command/call"
+  ],
+  "requires": [
+    "python>=3.10",
+    "urivision>=0.1.0"
+  ]
+}

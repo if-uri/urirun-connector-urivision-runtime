@@ -1,0 +1,14 @@
+{
+  "contracts": {
+    "capability/command/call": {
+      "version": "v1", "effect": "command", "reversible": false,
+      "inp": { "uri": "str", "payload": "?dict", "execute": "?bool" },
+      "out": { "connector": "const:urivision-runtime", "action": "const:runtime-call" },
+      "errors": ["invalid-argument", "not-found", "unavailable"],
+      "examples": [
+        { "payload": { "uri": "input://local/keyboard/command/type", "payload": { "text": "hello" } },
+          "result": { "ok": true, "connector": "urivision-runtime", "action": "runtime-call", "executed": false } }
+      ]
+    }
+  }
+}
